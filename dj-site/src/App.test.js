@@ -25,6 +25,7 @@ jest.mock('react-router-dom', () => ({
 // Import components after mocking
 const Header = require('./components/Header').default;
 const Footer = require('./components/Footer').default;
+const Home   = require('./pages/Home').default;
 
 test('renders site logo with artist name', () => {
   render(<Header />);
@@ -47,4 +48,15 @@ test('renders footer with social links', () => {
   expect(screen.getByRole('link', { name: /Facebook/i })).toBeInTheDocument();
   expect(screen.getByRole('link', { name: /Instagram/i })).toBeInTheDocument();
   expect(screen.getByRole('link', { name: /YouTube/i })).toBeInTheDocument();
+});
+
+test('Home hero displays social links (Facebook, Twitter, Instagram, YouTube, Telegram)', () => {
+  // jsdom does not implement HTMLMediaElement.play(); mock it to prevent the error
+  window.HTMLMediaElement.prototype.play = () => Promise.resolve();
+
+  render(<Home />);
+  const socialPlatforms = ['Facebook', 'Twitter', 'Instagram', 'YouTube', 'Telegram'];
+  socialPlatforms.forEach((platform) => {
+    expect(screen.getByRole('link', { name: platform })).toBeInTheDocument();
+  });
 });

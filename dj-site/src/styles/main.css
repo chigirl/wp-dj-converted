@@ -236,6 +236,56 @@ img {
   margin-top: 16px;
 }
 
+/* ---------- Hero Social Links ---------- */
+/* Sourced from Elementor icon-list widget on WordPress Home page (page_id=103)
+   Original settings: view=inline, font=Red Hat Display 16px bold uppercase,
+   text_color=#fff, text_color_hover=#047eee, space_between=30px */
+.hero-social {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+
+.hero-social li {
+  list-style: none;
+}
+
+.hero-social a {
+  font-family: 'Red Hat Display', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.hero-social a:hover {
+  color: #047eee;
+}
+
+@media (max-width: 1024px) {
+  .hero-social {
+    gap: 15px;
+  }
+  .hero-social a {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-social {
+    gap: 10px;
+    margin-top: 25px;
+  }
+  .hero-social a {
+    font-size: 10px;
+  }
+}
+
 .hero-scroll {
   position: absolute;
   bottom: 32px;

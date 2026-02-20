@@ -4,16 +4,31 @@ import React, { useEffect, useRef } from 'react';
  * Home Page — Hero section
  *
  * Content source: WordPress page "Home" (page_id=103)
- * Original content: '<h1>JacobBlack</h1> producer'
+ * Original Elementor layout: full-screen video background, artist name,
+ * tagline "producer", and an inline social-links icon-list widget.
  *
- * The hero uses the Live-Music.mp4 video as a background.
- * Replace the video src in public/assets/images/ with your own file if desired.
+ * Social links (Facebook, Twitter, Instagram, YouTube, Telegram) were part
+ * of the original Elementor hero widget (widgetType: "icon-list", view: "inline").
+ * Styling: Red Hat Display, bold, uppercase, white / #047eee hover, 30px gap.
  *
  * CUSTOMIZATION / API NOTES:
- *   To load hero content dynamically from a CMS or API, replace the
- *   static JSX below with a fetch() call to ENDPOINTS.pages or similar.
+ *   Replace the '#' href values in heroSocialLinks below with your real URLs,
+ *   or fetch them from ENDPOINTS.settings / a site-config API endpoint.
  *   See src/config/api.js for endpoint configuration.
  */
+
+// ---------------------------------------------------------------------------
+// Social links data — sourced from Elementor icon-list widget on Home page
+// CUSTOMIZATION: replace '#' with your actual social profile URLs
+// ---------------------------------------------------------------------------
+const heroSocialLinks = [
+  { label: 'Facebook',  href: '#' /* TODO: your Facebook URL  */ },
+  { label: 'Twitter',   href: '#' /* TODO: your Twitter URL   */ },
+  { label: 'Instagram', href: '#' /* TODO: your Instagram URL */ },
+  { label: 'YouTube',   href: '#' /* TODO: your YouTube URL   */ },
+  { label: 'Telegram',  href: '#' /* TODO: your Telegram URL  */ },
+];
+
 function Home() {
   const videoRef = useRef(null);
 
@@ -51,6 +66,22 @@ function Home() {
 
         {/* Tagline — CUSTOMIZATION: update as needed */}
         <p className="hero-subtitle">Producer &amp; DJ</p>
+
+        {/* Social links — sourced from original Elementor icon-list widget */}
+        <ul className="hero-social">
+          {heroSocialLinks.map(({ label, href }) => (
+            <li key={label}>
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <div className="hero-scroll" aria-hidden="true">
