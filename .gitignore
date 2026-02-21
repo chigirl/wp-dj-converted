@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+__MACOSX/
+
+# React app build artifacts and dependencies
+dj-site/node_modules/
+dj-site/build/
+dj-site/.env
+dj-site/.env.local
+dj-site/.env.development.local
+dj-site/.env.test.local
+dj-site/.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
